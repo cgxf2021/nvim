@@ -6,18 +6,18 @@ return {
 	event = "VeryLazy",
 	config = function()
 		local registry = require("mason-registry")
-		local function install(name)
-			local success, package = pcall(registry.get_package, name)
-			if success and not package:is_installed() then
-				package:install()
+		local function format_install(name)
+			local success, format = pcall(registry.get_package, name)
+			if success and not format:is_installed() then
+        format:install()
 			end
 		end
 
 		-- install stylua
-		install("stylua")
+		format_install("stylua")
 
 		-- install clang-format
-		install("clang-format")
+		format_install("clang-format")
 
 		local none_ls = require("null-ls")
 		none_ls.setup({
