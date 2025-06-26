@@ -56,6 +56,11 @@ return {
 			lsp_install(server, config)
 		end
 
+    vim.diagnostic.config({
+      virtual_text = true,
+      -- update_in_insert = true,
+    })
+
     -- auto start lsp
 		require("mason-lspconfig").setup({
 			ensure_installed = {},
