@@ -19,6 +19,9 @@ return {
 		-- install clang-format
 		format_install("clang-format")
 
+    -- install python black
+    format_install("black")
+
 		local none_ls = require("null-ls")
 		none_ls.setup({
 			sources = {

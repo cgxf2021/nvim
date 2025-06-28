@@ -2,6 +2,7 @@ return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
 	opts = {
+    preset = "modern",
 		filter = function(mapping)
 			return mapping.desc and mapping.desc ~= ""
 		end,
@@ -28,4 +29,10 @@ return {
 			},
 		},
 	},
+  config = function (_, opts)
+    require("which-key").setup(opts)
+    local keymaps = require("core.keymap").keymaps
+    local wk = require("which-key")
+    wk.add(keymaps)
+  end
 }

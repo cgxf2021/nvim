@@ -50,23 +50,27 @@ return {
 			},
 			-- clangd
 			["clangd"] = {},
+
+			-- python lsp server
+			["python-lsp-server"] = {},
 		}
 
 		for server, config in pairs(servers) do
 			lsp_install(server, config)
 		end
 
-    vim.diagnostic.config({
-      virtual_text = true,
-      -- update_in_insert = true,
-    })
+		vim.diagnostic.config({
+			virtual_text = true,
+			-- update_in_insert = true,
+		})
 
-    -- auto start lsp
+		-- auto start lsp
 		require("mason-lspconfig").setup({
 			ensure_installed = {},
 			automatic_enable = {
 				"lua_ls",
 				"clangd",
+				"pylsp",
 			},
 		})
 	end,
