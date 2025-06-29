@@ -16,6 +16,7 @@ neovim配置, 用于日常的工作和学习.
 │       ├── blink.lua
 │       ├── bufferline.lua
 │       ├── catppuccin.lua
+│       ├── gitsigns.lua
 │       ├── lspsaga.lua
 │       ├── lualine.lua
 │       ├── mason.lua
@@ -24,7 +25,9 @@ neovim配置, 用于日常的工作和学习.
 │       ├── nvim-surround.lua
 │       ├── nvim-tree.lua
 │       ├── nvim-treesitter.lua
-│       └── telescope.lua
+│       ├── telescope.lua
+│       ├── toggleterm.lua
+│       └── which-key.lua
 └── README.md
 ```
 
@@ -44,6 +47,9 @@ neovim配置, 用于日常的工作和学习.
 * nvim-tree: 显示文件树
 * nvim-treesitter: 构建语法树并实现更好的高亮显示
 * telescope: 文件或代码的查找、过滤、预览、选择等
+* which-key: 显示配置的热键及描述
+* gitsigns: 显示git更改标记
+* toggleterm: 内置终端
 
 ### LSP
 
