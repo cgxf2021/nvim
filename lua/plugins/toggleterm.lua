@@ -1,8 +1,8 @@
 return {
-	"akinsho/toggleterm.nvim",
+  "akinsho/toggleterm.nvim",
   event = "VeryLazy",
-	version = "*",
-	opts = {
+  version = "*",
+  opts = {
     open_mapping = [[<c-\>]],
     -- do not start in insert mode
     start_in_insert = false,
@@ -10,9 +10,9 @@ return {
     direction = "float",
     float_opts = {
       border = "single",
-    }
-	},
-	config = function(_, opts)
-		require("toggleterm").setup(opts)
-	end,
+    },
+  },
+  config = function(_, opts)
+    require("toggleterm").setup(opts)
+  end,
 }
