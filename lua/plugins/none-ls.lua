@@ -29,8 +29,23 @@ return {
         none_ls.builtins.formatting.clang_format,
       },
     })
+
+    local keys = {
+      {
+        "<leader>f",
+        group = "none-ls",
+        icon = "🍅",
+      },
+      {
+        "<leader>ff",
+        vim.lsp.buf.format,
+        silent = true,
+        desc = "format code",
+        icon = "🍑",
+      },
+    }
+
+    local wk = require("which-key")
+    wk.add(keys)
   end,
-  keys = {
-    { "<leader>lf", vim.lsp.buf.format },
-  },
 }
