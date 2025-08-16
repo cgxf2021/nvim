@@ -22,11 +22,17 @@ return {
     -- install python black
     format_install("black")
 
+    -- install cmake format
+    format_install("cmakelang")
+
     local none_ls = require("null-ls")
     none_ls.setup({
       sources = {
         none_ls.builtins.formatting.stylua,
-        none_ls.builtins.formatting.clang_format,
+        none_ls.builtins.formatting.custom_clang_format,
+        none_ls.builtins.formatting.black,
+        none_ls.builtins.formatting.cmake_format,
+        none_ls.builtins.formatting.buf,
       },
     })
 

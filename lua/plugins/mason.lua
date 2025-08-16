@@ -48,11 +48,31 @@ return {
           },
         },
       },
+
       -- clangd
-      ["clangd"] = {},
+      ["clangd"] = {
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+      },
 
       -- python lsp server
-      ["python-lsp-server"] = {},
+      ["python-lsp-server"] = {
+        filetypes = { "python" },
+      },
+
+      -- protobuf
+      ["buf"] = {
+        filetypes = { "proto" },
+      },
+
+      -- cmake
+      ["cmake-language-server"] = {
+        filetypes = { "cmake" },
+      },
+
+      -- markdown
+      ["markdown-oxide"] = {
+        filetypes = { "markdown" },
+      },
     }
 
     for server, config in pairs(servers) do
@@ -71,6 +91,9 @@ return {
         "lua_ls",
         "clangd",
         "pylsp",
+        "buf_ls",
+        "cmake",
+        "markdown_oxide",
       },
     })
   end,
