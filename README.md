@@ -28,6 +28,7 @@ neovim配置, 用于日常的工作和学习.
 │       ├── telescope.lua
 │       ├── toggleterm.lua
 │       └── which-key.lua
+│       └── noice.lua
 └── README.md
 ```
 
@@ -50,6 +51,7 @@ neovim配置, 用于日常的工作和学习.
 * which-key: 显示配置的热键及描述
 * gitsigns: 显示git更改标记
 * toggleterm: 内置终端
+* noice: 窗口输入命令行, 窗口通知消息
 
 ### LSP
 

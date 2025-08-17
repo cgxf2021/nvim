@@ -3,6 +3,7 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   lazy = false,
   opts = {
+    highlights = {},
     options = {
       diagnostics = "nvim_lsp",
       diagnostics_indicator = function(_, _, diagnostics_dict, _)
@@ -20,6 +21,15 @@ return {
         end
         return indicator
       end,
+      offsets = {
+        {
+          filetype = "NvimTree",
+          text = "File Explorer",
+          text_align = "center",
+          highlight = "Directory",
+          separator = true,
+        },
+      },
     },
   },
   config = function(_, opts)
