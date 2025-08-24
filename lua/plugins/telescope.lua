@@ -4,10 +4,7 @@ return {
     "nvim-lua/plenary.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
-      build = "cmake -DCMAKE_POLICY_VERSION_MINIMUM=4.0 \
-      -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && \
-      cmake --build build --config Release \
-      cmake --install build --prefix build",
+      build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
     },
   },
   cmd = "Telescope",

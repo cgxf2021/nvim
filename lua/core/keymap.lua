@@ -42,7 +42,7 @@ M.keymaps = {
     icon = "🍑",
   },
   {
-    "<leader>wj",
+    "<leader>wk",
     "<C-w>k",
     silent = true,
     desc = "switch to the bottom win",

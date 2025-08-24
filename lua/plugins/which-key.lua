@@ -111,8 +111,45 @@ return {
       },
     }
 
+    local telescope_keys = {
+      {
+        "<leader>s",
+        group = "telescope",
+        icon = "🍅",
+      },
+      {
+        "<leader>sf",
+        ":Telescope find_files<CR>",
+        silent = true,
+        desc = "telescope find files",
+        icon = "🍑",
+      },
+      {
+        "<leader>sg",
+        ":Telescope live_grep<CR>",
+        silent = true,
+        desc = "telescope live grep",
+        icon = "🍑",
+      },
+      {
+        "<leader>sb",
+        ":Telescope buffers<CR>",
+        silent = true,
+        desc = "telescope buffers",
+        icon = "🍑",
+      },
+      {
+        "<leader>sh",
+        ":Telescope help_tags<CR>",
+        silent = true,
+        desc = "telescope help tags",
+        icon = "🍑",
+      },
+    }
+
     local wk = require("which-key")
     wk.add(keymaps)
     wk.add(sagakeys)
+    wk.add(telescope_keys)
   end,
 }
