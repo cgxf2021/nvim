@@ -8,6 +8,8 @@ return {
     },
     -- setting up code templates
     "rafamadriz/friendly-snippets",
+    -- copilot blink cmp
+    "giuxtaposition/blink-cmp-copilot",
   },
   version = "1.*",
   event = "VeryLazy",
@@ -22,7 +24,15 @@ return {
     },
     snippets = { preset = "luasnip" },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "copilot", "lsp", "path", "snippets", "buffer" },
+      providers = {
+        copilot = {
+          name = "copilot",
+          module = "blink-cmp-copilot",
+          score_offset = 100,
+          async = true,
+        },
+      },
     },
     cmdline = {
       enabled = true,

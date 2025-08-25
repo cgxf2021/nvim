@@ -1,6 +1,6 @@
 return {
   "HiPhish/rainbow-delimiters.nvim",
-  -- event = "VeryLazy",
+  event = "BufReadPost",
   submodules = false,
   main = "rainbow-delimiters.setup",
   opts = {},

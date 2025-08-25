@@ -27,8 +27,10 @@ neovim配置, 用于日常的工作和学习.
 │       ├── nvim-treesitter.lua
 │       ├── telescope.lua
 │       ├── toggleterm.lua
-│       └── which-key.lua
-│       └── noice.lua
+│       ├── which-key.lua
+│       ├── noice.lua
+│       ├── rainbow-delimiters.lua
+│       └── copilot.lua
 └── README.md
 ```
 
@@ -52,6 +54,7 @@ neovim配置, 用于日常的工作和学习.
 * gitsigns: 显示git更改标记
 * toggleterm: 内置终端
 * noice: 窗口输入命令行, 窗口通知消息
+* rainbow-delimiters.lua: 彩色括号
 
 ### LSP
 
@@ -59,3 +62,7 @@ neovim配置, 用于日常的工作和学习.
 * none-ls: 代码格式化插件
 * blink-cmp: 代码补全
 * lspsaga: lsp补充功能, 例如查看帮助文档、进行跳转、对变量重命名
+
+### AI
+
+* copilot: ai代码补全
