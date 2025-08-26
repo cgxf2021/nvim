@@ -28,3 +28,9 @@ vim.opt.hlsearch = false
 
 -- disable default show info
 vim.opt.showmode = false
+
+-- code folding and expansion
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
