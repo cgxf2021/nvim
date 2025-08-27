@@ -30,7 +30,8 @@ neovim配置, 用于日常的工作和学习.
 │       ├── which-key.lua
 │       ├── noice.lua
 │       ├── rainbow-delimiters.lua
-│       └── copilot.lua
+│       ├── copilot.lua
+│       └── supermaven-nvim.lua
 └── README.md
 ```
 
@@ -66,3 +67,4 @@ neovim配置, 用于日常的工作和学习.
 ### AI
 
 * copilot: ai代码补全
+* supermaven-nvim: ai代码补全
