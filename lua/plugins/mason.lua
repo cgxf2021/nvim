@@ -37,6 +37,30 @@ return {
       vim.lsp.config(nvim_lsp, config)
     end
 
+    local get_container_name = function()
+      print("get_container_name")
+      local path = require("lspconfig.util").path
+
+      -- get current working directory
+      local current_dir = vim.loop.cwd()
+
+      local container_file_path = path.join(current_dir, ".container-nvim")
+
+      if path.exists(container_file_path) then
+        local file = io.open(container_file_path, "r")
+        if file then
+          local container_name = file:read("*l")
+          file:close()
+
+          container_name = container_name and container_name:match("%S+")
+          if container_name then
+            return container_name
+          end
+        end
+      end
+      return "none-container"
+    end
+
     local servers = {
       -- lua language server
       ["lua-language-server"] = {
@@ -51,6 +75,10 @@ return {
 
       -- clangd
       ["clangd"] = {
+        cmd = {
+          "remote-clangd.sh",
+          get_container_name(),
+        },
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
       },
 
