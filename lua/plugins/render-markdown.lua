@@ -17,6 +17,7 @@ return {
     code = {
       width = "block",
       min_width = 45,
+      -- disable_background = true,
     },
   },
   event = "VeryLazy",

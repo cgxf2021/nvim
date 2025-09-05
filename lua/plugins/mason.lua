@@ -63,7 +63,7 @@ return {
           end
         end
       end
-      return container_name, path_mappings
+      return "none-container", "none-path-mappings"
     end
 
     local container_name, path_mappings = get_clangd_container_params()
@@ -106,7 +106,7 @@ return {
       },
 
       -- markdown
-      ["markdown-oxide"] = {
+      ["marksman"] = {
         filetypes = { "markdown" },
       },
     }

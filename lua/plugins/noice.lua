@@ -20,15 +20,14 @@ return {
     },
   },
   dependencies = {
-    { "MunifTanjim/nui.nvim" },
-    {
-      "rcarriga/nvim-notify",
-      opts = {
-        background_color = "#000000",
-      },
-    },
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
   },
   config = function(_, opts)
     require("noice").setup(opts)
+
+    require("notify").setup({
+      background_colour = "#000000",
+    })
   end,
 }
