@@ -26,11 +26,8 @@ return {
       end
       local nvim_lsp = mason_lsp_mappings.get_mason_map().package_to_lspconfig[name]
 
-      -- code autocomplete
       config.capabilities = require("blink.cmp").get_lsp_capabilities()
-      -- code formatting
       config.on_attach = function(client)
-        -- disable lsp server formatting and range formatting
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
       end
@@ -39,11 +36,8 @@ return {
 
     local get_clangd_container_params = function()
       local path = require("lspconfig.util").path
-
-      -- get current working directory
       local current_dir = vim.loop.cwd()
       local container_file_path = path.join(current_dir, ".container-nvim")
-
       local container_name = nil
       local path_mappings = nil
 
@@ -53,7 +47,6 @@ return {
           container_name = file:read("*l")
           path_mappings = file:read("*l")
           file:close()
-          -- remove the last line break
           container_name = container_name and container_name:match("%S+")
           path_mappings = path_mappings and path_mappings:match("%S+")
           if container_name and path_mappings then
@@ -69,7 +62,6 @@ return {
     local container_name, path_mappings = get_clangd_container_params()
 
     local servers = {
-      -- lua language server
       ["lua-language-server"] = {
         settings = {
           Lua = {
@@ -79,8 +71,6 @@ return {
           },
         },
       },
-
-      -- clangd
       ["clangd"] = {
         cmd = {
           "remote-clangd.sh",
@@ -89,23 +79,15 @@ return {
         },
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
       },
-
-      -- python lsp server
       ["python-lsp-server"] = {
         filetypes = { "python" },
       },
-
-      -- protobuf
       ["buf"] = {
         filetypes = { "proto" },
       },
-
-      -- cmake
       ["cmake-language-server"] = {
         filetypes = { "cmake" },
       },
-
-      -- markdown
       ["marksman"] = {
         filetypes = { "markdown" },
       },
@@ -116,11 +98,23 @@ return {
     end
 
     vim.diagnostic.config({
-      virtual_text = true,
-      -- update_in_insert = true,
+      virtual_text = {
+        format = function(diagnostic)
+          local icon
+          if diagnostic.severity == vim.diagnostic.severity.ERROR then
+            icon = "🐛"
+          elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+            icon = "⚠️"
+          elseif diagnostic.severity == vim.diagnostic.severity.INFO then
+            icon = "💡"
+          elseif diagnostic.severity == vim.diagnostic.severity.HINT then
+            icon = "💭"
+          end
+          return icon .. " " .. diagnostic.message
+        end,
+      },
     })
 
-    -- auto start lsp
     require("mason-lspconfig").setup({
       ensure_installed = {},
       automatic_enable = {

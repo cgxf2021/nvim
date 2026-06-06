@@ -1,8 +1,6 @@
 return {
   "nvimtools/none-ls.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
+  dependencies = { "nvim-lua/plenary.nvim" },
   event = "VeryLazy",
   config = function()
     local registry = require("mason-registry")
@@ -13,16 +11,9 @@ return {
       end
     end
 
-    -- install stylua
     format_install("stylua")
-
-    -- install clang-format
     format_install("clang-format")
-
-    -- install python black
     format_install("black")
-
-    -- install cmake format
     format_install("cmakelang")
 
     local none_ls = require("null-ls")
@@ -35,23 +26,5 @@ return {
         none_ls.builtins.formatting.buf,
       },
     })
-
-    local keys = {
-      {
-        "<leader>f",
-        group = "none-ls",
-        icon = "🍅",
-      },
-      {
-        "<leader>ff",
-        vim.lsp.buf.format,
-        silent = true,
-        desc = "format code",
-        icon = "🍑",
-      },
-    }
-
-    local wk = require("which-key")
-    wk.add(keys)
   end,
 }

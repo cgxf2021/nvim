@@ -3,7 +3,6 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   lazy = false,
   opts = {
-    highlights = {},
     options = {
       diagnostics = "nvim_lsp",
       diagnostics_indicator = function(_, _, diagnostics_dict, _)
@@ -32,45 +31,4 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    require("bufferline").setup(opts)
-    local keys = {
-      {
-        "<leader>b",
-        group = "bufferline",
-        icon = "🍅",
-      },
-      {
-        "<leader>bh",
-        ":BufferLineCyclePrev<CR>",
-        silent = true,
-        desc = "switch to the previous buffer",
-        icon = "🍑",
-      },
-      {
-        "<leader>bl",
-        ":BufferLineCycleNext<CR>",
-        silent = true,
-        desc = "switch to the next buffer",
-        icon = "🍑",
-      },
-      {
-        "<leader>bd",
-        ":bdelete<CR>",
-        silent = true,
-        desc = "delete the current buffer",
-        icon = "🍑",
-      },
-      {
-        "<leader>bp",
-        ":BufferLinePick<CR>",
-        silent = true,
-        desc = "select to switch to a buffer",
-        icon = "🍑",
-      },
-    }
-
-    local wk = require("which-key")
-    wk.add(keys)
-  end,
 }

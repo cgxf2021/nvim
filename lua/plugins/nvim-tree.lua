@@ -28,37 +28,4 @@ return {
       exclude = {},
     },
   },
-  config = function(_, opts)
-    require("nvim-tree").setup(opts)
-    local keys = {
-      {
-        "<leader>t",
-        group = "tree",
-        icon = "🍅",
-      },
-      {
-        "<leader>te",
-        ":NvimTreeToggle<CR>",
-        silent = true,
-        desc = "open or close the tree",
-        icon = "🍑",
-      },
-      {
-        "<leader>tc",
-        ":NvimTreeCollapse<CR>",
-        silent = true,
-        desc = "collapses the tree recursively",
-        icon = "🍑",
-      },
-      {
-        "<leader>tf",
-        ":NvimTreeFindFile<CR>",
-        silent = true,
-        desc = "find current file in the tree",
-        icon = "🍑",
-      },
-    }
-    local wk = require("which-key")
-    wk.add(keys)
-  end,
 }
