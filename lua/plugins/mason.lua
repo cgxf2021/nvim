@@ -7,6 +7,7 @@ return {
   event = "VeryLazy",
   opts = {
     ui = {
+      backdrop = vim.g.transparent_background_enabled and 100 or 60,
       icons = {
         package_installed = "✓",
         package_pending = "➜",

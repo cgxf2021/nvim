@@ -48,11 +48,6 @@ M.keymaps = {
   { "<leader>f", group = "format", icon = "🧹" },
   { "<leader>ff", vim.lsp.buf.format, silent = true, desc = "format code", icon = "🍑" },
 
-  { "<leader>T", group = "transparent", icon = "🐢" },
-  { "<leader>Te", ":TransparentEnable<CR>", silent = true, desc = "enable transparent", icon = "🍑" },
-  { "<leader>Td", ":TransparentDisable<CR>", silent = true, desc = "disable transparent", icon = "🍑" },
-  { "<leader>Tt", ":TransparentToggle<CR>", silent = true, desc = "toggle transparent", icon = "🍑" },
-
   { "<leader>o", group = "opencode", icon = "🤖" },
   { "<leader>oo", function() require("opencode.config").opts.server.toggle() end, desc = "toggle terminal", icon = "🍑" },
   { "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "ask", icon = "🍑" },

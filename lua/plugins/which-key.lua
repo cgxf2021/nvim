@@ -31,7 +31,7 @@ return {
       zindex = 1000,
       border = "single",
       wo = {
-        winblend = 10,
+        winblend = vim.g.transparent_background_enabled and 0 or 10,
       },
     },
   },
