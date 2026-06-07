@@ -29,7 +29,32 @@ return {
   config = function()
     ---@type opencode.Opts
     vim.g.opencode_opts = {
-      -- Your configuration, if any; goto definition on the type or field for details
+      lsp = { enabled = true },
+      server = {
+        toggle = function()
+          require("opencode.terminal").toggle("opencode --port", {
+            relative = "editor",
+            width = math.floor(vim.o.columns * 0.8),
+            height = math.floor(vim.o.lines * 0.8),
+            row = math.floor(vim.o.lines * 0.1),
+            col = math.floor(vim.o.columns * 0.1),
+            style = "minimal",
+            border = "single",
+          })
+          vim.schedule(function()
+            for _, w in ipairs(vim.api.nvim_list_wins()) do
+              local cfg = vim.api.nvim_win_get_config(w)
+              if cfg.relative == "editor" then
+                if vim.bo[vim.api.nvim_win_get_buf(w)].buftype == "terminal" then
+                  vim.api.nvim_set_current_win(w)
+                  vim.cmd("startinsert")
+                  return
+                end
+              end
+            end
+          end)
+        end,
+      },
     }
 
     vim.o.autoread = true -- Required for `opts.events.reload`

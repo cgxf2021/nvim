@@ -35,12 +35,16 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 vim.opt.foldlevel = 99
 
+local function set_indent(size)
+  vim.opt_local.expandtab = true
+  vim.opt_local.tabstop = size
+  vim.opt_local.shiftwidth = size
+  vim.opt_local.softtabstop = size
+end
+
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "c", "cpp", "h", "hpp" },
+  pattern = { "c", "cpp", "h", "hpp", "python", "proto", "cmake" },
   callback = function()
-    vim.opt_local.expandtab = true
-    vim.opt_local.tabstop = 4
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.softtabstop = 4
+    set_indent(4)
   end,
 })

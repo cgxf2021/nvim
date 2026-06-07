@@ -52,6 +52,15 @@ M.keymaps = {
   { "<leader>Te", ":TransparentEnable<CR>", silent = true, desc = "enable transparent", icon = "🍑" },
   { "<leader>Td", ":TransparentDisable<CR>", silent = true, desc = "disable transparent", icon = "🍑" },
   { "<leader>Tt", ":TransparentToggle<CR>", silent = true, desc = "toggle transparent", icon = "🍑" },
+
+  { "<leader>o", group = "opencode", icon = "🤖" },
+  { "<leader>oo", function() require("opencode.config").opts.server.toggle() end, desc = "toggle terminal", icon = "🍑" },
+  { "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "ask", icon = "🍑" },
+  { "<leader>os", function() require("opencode").select() end, desc = "select", icon = "🍑" },
+  { "<leader>or", function() return require("opencode").operator("@this ") end, expr = true, desc = "add range", icon = "🍑" },
+  { "<leader>ol", function() return require("opencode").operator("@this ") .. "_" end, expr = true, desc = "add line", icon = "🍑" },
+  { "<leader>ou", function() require("opencode").command("session.half.page.up") end, desc = "scroll up", icon = "🍑" },
+  { "<leader>od", function() require("opencode").command("session.half.page.down") end, desc = "scroll down", icon = "🍑" },
 }
 
 return M

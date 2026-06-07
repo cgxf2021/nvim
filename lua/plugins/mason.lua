@@ -32,6 +32,7 @@ return {
         client.server_capabilities.documentRangeFormattingProvider = false
       end
       vim.lsp.config(nvim_lsp, config)
+      vim.lsp.enable(nvim_lsp)
     end
 
     local get_clangd_container_params = function()
@@ -63,6 +64,7 @@ return {
 
     local servers = {
       ["lua-language-server"] = {
+        filetypes = { "lua" },
         settings = {
           Lua = {
             diagnostics = {
