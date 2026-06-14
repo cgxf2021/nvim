@@ -32,27 +32,42 @@ return {
       lsp = { enabled = true },
       server = {
         toggle = function()
-          require("opencode.terminal").toggle("opencode --port", {
+          -- Close existing floating terminal if open
+          for _, w in ipairs(vim.api.nvim_list_wins()) do
+            local cfg = vim.api.nvim_win_get_config(w)
+            if cfg.relative == "editor" then
+              local buf = vim.api.nvim_win_get_buf(w)
+              if vim.bo[buf].buftype == "terminal" then
+                vim.api.nvim_win_close(w, true)
+                return
+              end
+            end
+          end
+          -- Open new floating terminal
+          local width = math.floor(vim.o.columns * 0.8)
+          local height = math.floor(vim.o.lines * 0.8)
+          local row = math.floor(vim.o.lines * 0.1)
+          local col = math.floor(vim.o.columns * 0.1)
+          local buf = vim.api.nvim_create_buf(false, true)
+          local win = vim.api.nvim_open_win(buf, true, {
             relative = "editor",
-            width = math.floor(vim.o.columns * 0.8),
-            height = math.floor(vim.o.lines * 0.8),
-            row = math.floor(vim.o.lines * 0.1),
-            col = math.floor(vim.o.columns * 0.1),
+            width = width,
+            height = height,
+            row = row,
+            col = col,
             style = "minimal",
             border = "single",
           })
-          vim.schedule(function()
-            for _, w in ipairs(vim.api.nvim_list_wins()) do
-              local cfg = vim.api.nvim_win_get_config(w)
-              if cfg.relative == "editor" then
-                if vim.bo[vim.api.nvim_win_get_buf(w)].buftype == "terminal" then
-                  vim.api.nvim_set_current_win(w)
-                  vim.cmd("startinsert")
-                  return
+          vim.fn.termopen("opencode --port", {
+            on_exit = function()
+              vim.schedule(function()
+                if vim.api.nvim_win_is_valid(win) then
+                  vim.api.nvim_win_close(win, true)
                 end
-              end
-            end
-          end)
+              end)
+            end,
+          })
+          vim.cmd("startinsert")
         end,
       },
     }
