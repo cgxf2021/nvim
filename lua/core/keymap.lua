@@ -56,6 +56,19 @@ M.keymaps = {
   { "<leader>ol", function() return require("opencode").operator("@this ") .. "_" end, expr = true, desc = "add line", icon = "🍑" },
   { "<leader>ou", function() require("opencode").command("session.half.page.up") end, desc = "scroll up", icon = "🍑" },
   { "<leader>od", function() require("opencode").command("session.half.page.down") end, desc = "scroll down", icon = "🍑" },
+
+  { "<leader>g", group = "gitsigns", icon = "🍃" },
+  { "<leader>gj", function() require("gitsigns").next_hunk() end, desc = "next hunk", icon = "🍑" },
+  { "<leader>gk", function() require("gitsigns").prev_hunk() end, desc = "prev hunk", icon = "🍑" },
+  { "<leader>gs", function() require("gitsigns").stage_hunk() end, desc = "stage hunk", icon = "🍑" },
+  { "<leader>gr", function() require("gitsigns").reset_hunk() end, desc = "reset hunk", icon = "🍑" },
+  { "<leader>gP", function() require("gitsigns").preview_hunk() end, desc = "preview hunk", icon = "🍑" },
+  { "<leader>gb", function() require("gitsigns").blame_line() end, desc = "blame line", icon = "🍑" },
+  { "<leader>gd", function() require("gitsigns").diffthis() end, desc = "diff this", icon = "🍑" },
+  { "<leader>gS", function() require("gitsigns").stage_buffer() end, desc = "stage buffer", icon = "🍑" },
+  { "<leader>gR", function() require("gitsigns").reset_buffer() end, desc = "reset buffer", icon = "🍑" },
+  { "<leader>gt", function() require("gitsigns").toggle_current_line_blame() end, desc = "toggle blame", icon = "🍑" },
+  { "<leader>gu", function() require("gitsigns").undo_stage_hunk() end, desc = "undo stage hunk", icon = "🍑" },
 }
 
 return M

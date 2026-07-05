@@ -17,6 +17,9 @@ return {
         },
       },
     },
+    view = {
+      width = 40,
+    },
     filters = {
       enable = true,
       git_ignored = false,
